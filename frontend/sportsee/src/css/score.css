@@ -1,0 +1,15 @@
+.progress-label{
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 26px;
+	color: #282D30;
+}
+.progress-label-text{
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 26px;
+	color: #74798C !important;
+}
+.score-container{
+	background: #FBFBFB;
+}

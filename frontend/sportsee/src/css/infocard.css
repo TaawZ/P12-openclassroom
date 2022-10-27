@@ -1,0 +1,21 @@
+.card{
+	display: flex;
+	background-color: #FBFBFB;
+	width: 250px;
+	height: 120px;
+	justify-content: space-around;
+	align-items: center;
+}
+.text-container{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.value{
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 24px;
+}
+.elements{
+	color: #74798C;
+}
