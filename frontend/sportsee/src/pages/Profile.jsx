@@ -1,3 +1,4 @@
+import React from "react";
 import { getData } from "../api";
 import { useEffect, useState } from "react";
 import "../css/profile.css";
@@ -13,10 +14,19 @@ import Protein from "../assets/protein-icon.svg";
 import Calories from "../assets/calories-icon.svg";
 
 export default function Profile() {
+	const [width, setWidth] = useState([]);
 	const [userData, setUserData] = useState([]);
 	const [userActivity, setUserActivity] = useState([]);
 	const [userSessions, setUserSessions] = useState([]);
 	const [userPerformance, setUserPerformance] = useState([]);
+
+	const breakpoint = 1034;
+
+	useEffect(() => {
+		const handleWindowResize = () => setWidth(window.innerWidth);
+		window.addEventListener("resize", handleWindowResize);
+		return () => window.removeEventListener("resize", handleWindowResize);
+	}, []);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -52,20 +62,35 @@ export default function Profile() {
 	return (
 		<div className="page">
 			<div className="profile-content">
-				<Hello name={userData.userInfos?.firstName} />
-				<Barchart data={userActivity?.sessions} />
+				<div>
+					<Hello name={userData.userInfos?.firstName} />
+					<Barchart data={userActivity?.sessions} />
+				</div>
 				<div className="profile-chart">
 					<Linechart data={userSessions?.sessions} />
 					<Radarchart data={userPerformance?.data} />
 					<Score userScore={userData?.todayScore} />
 				</div>
+
+				<div>
+					{width < breakpoint ? (
+						<div className="info-container">
+							<Infocard elt="Calories" value={userData?.keyData?.lipidCount} img={Calories} unit="kCal" />
+							<Infocard elt="Proteines" value={userData?.keyData?.lipidCount} img={Protein} unit="g" />
+							<Infocard elt="Glucide" value={userData?.keyData?.lipidCount} img={Carbs} unit="g" />
+							<Infocard elt="Lipides" value={userData?.keyData?.lipidCount} img={Lipids} unit="g" />
+						</div>
+					) : null}
+				</div>
 			</div>
-			<div className="info-container">
-				<Infocard elt="Calories" value={userData?.keyData?.lipidCount} img={Calories} unit="kCal" />
-				<Infocard elt="Proteines" value={userData?.keyData?.lipidCount} img={Protein} unit="g" />
-				<Infocard elt="Glucide" value={userData?.keyData?.lipidCount} img={Carbs} unit="g" />
-				<Infocard elt="Lipides" value={userData?.keyData?.lipidCount} img={Lipids} unit="g" />
-			</div>
+			{width > breakpoint ? (
+				<div className="info-container">
+					<Infocard elt="Calories" value={userData?.keyData?.lipidCount} img={Calories} unit="kCal" />
+					<Infocard elt="Proteines" value={userData?.keyData?.lipidCount} img={Protein} unit="g" />
+					<Infocard elt="Glucide" value={userData?.keyData?.lipidCount} img={Carbs} unit="g" />
+					<Infocard elt="Lipides" value={userData?.keyData?.lipidCount} img={Lipids} unit="g" />
+				</div>
+			) : null}
 		</div>
 	);
 }

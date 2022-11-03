@@ -14,40 +14,42 @@ function formatPolarAxis(value = 0) {
 
 export default function Linechart({ data }) {
 	return (
-		<div>
-			<LineChart width={250} height={250} className="linechart-container" data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-				<CartesianGrid strokeOpacity="0" />
-				<XAxis tickFormatter={formatPolarAxis} fontSize="14px" tickLine={false} axisLine={false} stroke="white" dataKey="day" />
-				<YAxis hide={true} />
-				<Tooltip />
-				<Legend
-					verticalAlign="top"
-					align="left"
-					iconSize={0}
-					content={() => (
-						<div
-							className="my-legend"
-							style={{
-								color: "white",
-								marginTop: "-10px",
-								marginLeft: "20px",
-								position: "absolute",
-								fontSize: "10px",
-								fontWeight: "500",
-								fontSize: "15px",
-								lineHeight: "24px",
-								top: "20px",
-							}}
-						>
-							Durée moyenne des
-							<br />
-							sessions
-						</div>
-					)}
-					margin={{ left: 20 }}
-				/>
-				<Line dot={false} type="monotone" dataKey="sessionLength" stroke="#E8E8E8" />
-			</LineChart>
+		<div className="linechart-container">
+			<ResponsiveContainer>
+				<LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+					<CartesianGrid strokeOpacity="0" />
+					<XAxis tickFormatter={formatPolarAxis} fontSize="14px" tickLine={false} axisLine={false} stroke="white" dataKey="day" />
+					<YAxis hide={true} />
+					<Tooltip />
+					<Legend
+						verticalAlign="top"
+						align="left"
+						iconSize={0}
+						content={() => (
+							<div
+								className="my-legend"
+								style={{
+									color: "white",
+									marginTop: "-10px",
+									marginLeft: "20px",
+									position: "absolute",
+									fontSize: "10px",
+									fontWeight: "500",
+									fontSize: "15px",
+									lineHeight: "24px",
+									top: "20px",
+								}}
+							>
+								Durée moyenne des
+								<br />
+								sessions
+							</div>
+						)}
+						margin={{ left: 20 }}
+					/>
+					<Line dot={false} type="monotone" dataKey="sessionLength" stroke="#E8E8E8" />
+				</LineChart>
+			</ResponsiveContainer>
 		</div>
 	);
 }

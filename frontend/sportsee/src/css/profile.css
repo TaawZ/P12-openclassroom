@@ -12,11 +12,34 @@
 }
 .profile-chart{
 	display: flex;
-	gap: 50px;
+	justify-content: space-between;
 }
 .info-container{
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
-	padding-top: 175px;
 }
+
+@media screen and (max-width : 1024px) {
+	.container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.profile-chart{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 20px;
+	}
+	.info-container{
+		display: flex;
+		flex-direction: row;
+		gap: 30px;
+	}
+	.chart-container{
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	}

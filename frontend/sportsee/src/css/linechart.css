@@ -1,4 +1,6 @@
 .linechart-container {
 	background-color : #FF0000;
 	border-radius: 5px;
+	width: 250px;
+	height: 250px;
 }

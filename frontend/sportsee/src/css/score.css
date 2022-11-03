@@ -12,4 +12,12 @@
 }
 .score-container{
 	background: #FBFBFB;
+	width: 250px;
+	height: 250px;
+}
+.score-container span{
+	padding-left: 10px;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 24px;
 }

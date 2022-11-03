@@ -1,7 +1,9 @@
 .barchart-container{
 	background-color: #FBFBFB;
-	width: 100%;
+	width: 835px;
+	height: 320px;
 	padding: 50px;
+	border-radius: 5px;
 }
 .barchart.title{
 	padding-bottom: -10px;
@@ -9,3 +11,15 @@
 .recharts-default-legend{
 	margin-bottom: 20px;
 }
+.recharts-default-legend{
+	position: relative;
+	top: -25px;
+}
+
+@media screen and (max-width : 1024px) {
+	.barchart-container{
+		background-color: #FBFBFB;
+		width: 650px;
+		height: 250px;
+	}
+	}
